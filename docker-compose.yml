@@ -10,13 +10,9 @@ services:
       - $PWD:/csv_files/
   db:
     environment:
-      HMA_CLI: psql -U sqluser -d sqluser
-      PGDATA: /pgtmpfs
       POSTGRES_DB: sqluser
       POSTGRES_USER: sqluser
       POSTGRES_HOST_AUTH_METHOD: trust
     image: docker.io/library/postgres:15
-    tmpfs:
-      - /pgtmpfs
     volumes:
-    - $PWD:/csv_files/:rw
+    - $PWD:/files/:rw
